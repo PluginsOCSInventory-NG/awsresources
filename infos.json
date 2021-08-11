@@ -1,0 +1,12 @@
+{
+    "displayName" : "Aws Ressources",
+    "author" : ["Léa Droguet"],
+    "contributor" : [""],
+    "supportedAgent" : ["Unix"],
+    "version" : "1.0",
+    "licence" : "GPLv2",
+    "description" : {
+      "fr" : "Connexion à AWS via l'interface de ligne de commande et récupération des données liées aux instances",
+      "en" : "Connect to AWS via AWS CLI and retrieve instances data"
+    }
+  }
