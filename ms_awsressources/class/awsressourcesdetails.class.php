@@ -16,9 +16,9 @@ class AWSDetails {
   public $finalQuery = null;
 
   public $viewList = array(
-    "AWS_INSTANCES" => "AWS_INSTANCES",
-    "AWS_NETWORKS" => "AWS_NETWORKS",
-    "AWS_SPECS" => "AWS_SPECS",
+    "General" => "AWS_INSTANCES",
+    "Networks" => "AWS_INSTANCES_NETWORKS",
+    "Hardware" => "AWS_INSTANCES_HARDWARE",
   );
 
 
@@ -35,7 +35,7 @@ class AWSDetails {
 
     if($result != false){
       while($row = $result->fetch_assoc()){
-        if($row['Field'] != "ID"){
+        if($row['Field'] != "HARDWARE_ID"){
            $this->fieldArray[] = $row['Field'];
         }
       }
@@ -90,7 +90,6 @@ class AWSDetails {
 
   public function showAwsLeftMenu($activeMenu){
     $menuArray = $this->viewList;
-    error_log(print_r($menuArray, true));
 
     echo '<ul class="nav nav-pills nav-stacked navbar-left">';
     foreach ($menuArray as $key=>$value){

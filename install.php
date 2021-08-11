@@ -34,13 +34,13 @@ function extension_install_awsressources()
                           PRIMARY KEY  (`ID`,`HARDWARE_ID`)
                             ) ENGINE=INNODB ;");
 
-    $commonObject -> sqlQuery("CREATE TABLE IF NOT EXISTS `AWS_NETWORKS` (
+    $commonObject -> sqlQuery("CREATE TABLE IF NOT EXISTS `AWS_INSTANCES_NETWORKS` (
                         `ID` INT(11) NOT NULL AUTO_INCREMENT,
                         `HARDWARE_ID` INT(11) NOT NULL,
                         `RESERVATION_ID` VARCHAR(255) NOT NULL,
                         `OWNER_ID` VARCHAR(255) NOT NULL,
                         `INSTANCE_ID` VARCHAR(255) NOT NULL,
-                        `MAC_ADDR` VARCHAR(255) NOT NULL,
+                        `MAC_ADDR` VARCHAR(255) DEFAULT NULL,
                         `PRIVATE_DNS_NAME` VARCHAR(255) DEFAULT NULL,
                         `PRIVATE_IP_ADDR` VARCHAR(255) DEFAULT NULL,
                         `PUBLIC_DNS_NAME` VARCHAR(255) DEFAULT NULL,
@@ -51,7 +51,7 @@ function extension_install_awsressources()
                         ) ENGINE=INNODB;");
 
 
-    $commonObject -> sqlQuery("CREATE TABLE IF NOT EXISTS `AWS_SPECS` (
+    $commonObject -> sqlQuery("CREATE TABLE IF NOT EXISTS `AWS_INSTANCES_HARDWARE` (
                         `ID` INT(11) NOT NULL AUTO_INCREMENT,
                         `HARDWARE_ID` INT(11) NOT NULL,
                         `RESERVATION_ID` VARCHAR(255) NOT NULL,

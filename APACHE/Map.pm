@@ -43,7 +43,7 @@ $DATA_MAP{AWS_INSTANCES} = {
     }
   };
 
-$DATA_MAP{AWS_NETWORKS} = {
+$DATA_MAP{AWS_INSTANCES_NETWORKS} = {
     mask => 0,
     multi => 1,
     auto => 1,
@@ -64,7 +64,7 @@ $DATA_MAP{AWS_NETWORKS} = {
     }
   };
 
-$DATA_MAP{AWS_SPECS} = {
+$DATA_MAP{AWS_INSTANCES_HARDWARE} = {
     mask => 0,
     multi => 1,
     auto => 1,

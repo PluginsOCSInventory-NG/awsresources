@@ -83,7 +83,7 @@ sub awsressources_inventory_handler {
 
             foreach my $networkscat (@{$instance->{NetworkInterfaces}}) {
                 $logger->debug('networks level');
-                push @{$common->{xmltags}->{AWS_NETWORKS}},
+                push @{$common->{xmltags}->{AWS_INSTANCES_NETWORKS}},
                 {
                     RESERVATION_ID => [$reservationId],
                     OWNER_ID => [$ownerId],
@@ -102,7 +102,7 @@ sub awsressources_inventory_handler {
 
             foreach my $blockcat (@{$instance->{BlockDeviceMappings}}) {
                 $logger->debug('block level');
-                push @{$common->{xmltags}->{AWS_SPECS}},
+                push @{$common->{xmltags}->{AWS_INSTANCES_HARDWARE}},
                 {
                     RESERVATION_ID => [$reservationId],
                     OWNER_ID => [$ownerId],

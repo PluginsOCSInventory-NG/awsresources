@@ -8,7 +8,6 @@
 
  require("class/awsressourcesdetails.class.php");
 
- error_log($_GET['list']);
 // Process Get
 if(isset($_GET['list'])){
   $activeMenu = $_GET['list'];
