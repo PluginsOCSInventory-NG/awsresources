@@ -45,19 +45,18 @@ sub awsressources_inventory_handler {
     # Please modify below variable if you chose any other profile name during aws cli configuration
     my $profileName = 'ocs';
     
-    # Use AWS CLI to describe all instances present in profile's default region
+    # Instances will be retrieved for the default region linked to the profile 
     my $result = `aws ec2 --profile $profileName describe-instances`;
     $result = decode_json $result;
 
     # reservations level
+   
     foreach my $reservation (@{$result->{Reservations}}) {
         my $reservationId = $reservation->{ReservationId};
         my $ownerId = $reservation->{OwnerId};
         
         # instance level
         foreach my $instance (@{$reservation->{Instances}}) {
-            $logger->debug('instance level');
-            $logger->debug($instance->{InstanceId});
             # Add XML
             push @{$common->{xmltags}->{AWS_INSTANCES}},
             {
@@ -82,7 +81,6 @@ sub awsressources_inventory_handler {
             };
 
             foreach my $networkscat (@{$instance->{NetworkInterfaces}}) {
-                $logger->debug('networks level');
                 push @{$common->{xmltags}->{AWS_INSTANCES_NETWORKS}},
                 {
                     RESERVATION_ID => [$reservationId],
@@ -100,8 +98,8 @@ sub awsressources_inventory_handler {
 
             }
 
+
             foreach my $blockcat (@{$instance->{BlockDeviceMappings}}) {
-                $logger->debug('block level');
                 push @{$common->{xmltags}->{AWS_INSTANCES_HARDWARE}},
                 {
                     RESERVATION_ID => [$reservationId],
@@ -119,12 +117,16 @@ sub awsressources_inventory_handler {
                     BLOCK_DEVICE_STATUS => [$blockcat->{Ebs}{Status}],
                     BLOCK_DEVICE_VOLUME_ID => [$blockcat->{Ebs}{VolumeId}],
                 };
-            
+                
             }
 
         }
 
+
     }
+
+
+
 
     $logger->debug("Finishing awsressources_inventory_handler ..");
 }

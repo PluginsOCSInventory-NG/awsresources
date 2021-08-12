@@ -15,6 +15,7 @@ if(isset($_GET['list'])){
   $activeMenu = "AWS_INSTANCES";
 }
 
+printEnTete($l->g(56001));
 // Generate left menu
 $details = new AWSDetails();
 echo "<div class='col-md-2'>";

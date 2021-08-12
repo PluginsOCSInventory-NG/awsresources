@@ -60,6 +60,7 @@ $DATA_MAP{AWS_INSTANCES_NETWORKS} = {
       PRIVATE_IP_ADDR => {},
       PUBLIC_DNS_NAME => {},
       VPC_ID => {},
+      NETWORK_INTERFACE_ID => {},
       SUBNET_ID => {},
     }
   };
@@ -76,7 +77,6 @@ $DATA_MAP{AWS_INSTANCES_HARDWARE} = {
       RESERVATION_ID => {},
       OWNER_ID => {},
       INSTANCE_ID => {},
-      ARCHITECTURE => {},
       BLOCK_DEVICE_NAME => {},
       BLOCK_DEVICE_ATTACH_TIME => {},
       BLOCK_DEVICE_DELETE_ON_TERMINATION => {},

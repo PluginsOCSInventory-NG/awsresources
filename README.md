@@ -25,7 +25,7 @@ This plugin will retrieve Amazon AWS EC2 ressources details using the AWS CLI.
 
 *AWS CLI Configuration :*
 
-Configure AWS CLI profile named for instance 'ocs'.
+Configure an AWS CLI profile named 'ocs'.
 ```
 aws configure --profile ocs
 AWS Access Key ID [None]: ********************

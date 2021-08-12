@@ -8,8 +8,8 @@ function extension_install_awsressources()
     $commonObject = new ExtensionCommon;
 
     $commonObject -> sqlQuery("DROP TABLE `AWS_INSTANCES`");
-    $commonObject -> sqlQuery("DROP TABLE `AWS_NETWORKS`");
-    $commonObject -> sqlQuery("DROP TABLE `AWS_SPECS`");
+    $commonObject -> sqlQuery("DROP TABLE `AWS_INSTANCES_NETWORKS`");
+    $commonObject -> sqlQuery("DROP TABLE `AWS_INSTANCES_HARDWARE`");
 
     $commonObject -> sqlQuery("CREATE TABLE `AWS_INSTANCES` (
                           `ID` INT(11) NOT NULL AUTO_INCREMENT,
@@ -78,8 +78,8 @@ function extension_delete_awsressources()
 {
     $commonObject = new ExtensionCommon;
     $commonObject -> sqlQuery("DROP TABLE `AWS_INSTANCES`");
-    $commonObject -> sqlQuery("DROP TABLE `AWS_NETWORKS`");
-    $commonObject -> sqlQuery("DROP TABLE `AWS_SPECS`");
+    $commonObject -> sqlQuery("DROP TABLE `AWS_INSTANCES_NETWORKS`");
+    $commonObject -> sqlQuery("DROP TABLE `AWS_INSTANCES_HARDWARE`");
 }
 
 /**
