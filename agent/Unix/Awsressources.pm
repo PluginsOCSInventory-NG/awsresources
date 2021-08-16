@@ -57,7 +57,7 @@ sub awsressources_inventory_handler {
         $result = decode_json $result;
 
         if (@{$result->{Reservations}}) {
-            $logger->debug("Generation xml data for region : $region");        
+            $logger->debug("Generating xml data for region : $region");        
             # reservations level
             foreach my $reservation (@{$result->{Reservations}}) {
                 my $reservationId = $reservation->{ReservationId};
