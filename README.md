@@ -33,7 +33,7 @@ Line 47 to 49 :
 ```
     # add there 1. targeted account and 2. arrays of targeted regions for this account
     my %targets = (
-            '621784199302' =>    ['eu-central-1', 'us-east-2'],
+            '000000000002' =>    ['eu-central-1', 'us-east-2'],
             '000000000001' =>    ['eu-central-2', 'us-east-1'],
             ); 
 ```

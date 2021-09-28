@@ -1,4 +1,4 @@
- # Plugin "Aws Ressources" OCSInventory
+# Plugin "Aws Ressources" OCSInventory
 # Author: Léa DROGUET
 
 package Ocsinventory::Agent::Modules::Awsressources;
@@ -6,7 +6,6 @@ package Ocsinventory::Agent::Modules::Awsressources;
 use Encode qw(decode);
 use POSIX qw(strftime);
 use JSON::PP;
-use Data::Dumper;
 
 
 sub new {
