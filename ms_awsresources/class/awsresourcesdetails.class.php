@@ -98,7 +98,7 @@ class AWSDetails {
         if ($activeMenu == $value) {
             echo "class='active'";
         }
-        echo " ><a href='?function=ms_awsressources&list=".$value."'>".$key."</a></li>";
+        echo " ><a href='?function=ms_awsresources&list=".$value."'>".$key."</a></li>";
     }
     echo '</ul>';
   }

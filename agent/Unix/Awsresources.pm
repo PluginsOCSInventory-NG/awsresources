@@ -1,7 +1,7 @@
-# Plugin "Aws Ressources" OCSInventory
+# Plugin "Aws Resources" OCSInventory
 # Author: Léa DROGUET
 
-package Ocsinventory::Agent::Modules::Awsressources;
+package Ocsinventory::Agent::Modules::Awsresources;
 
 use Encode qw(decode);
 use POSIX qw(strftime);
@@ -10,7 +10,7 @@ use JSON::PP;
 
 sub new {
 
-    my $name="awsressources"; # Name of the module
+    my $name="awsresources"; # Name of the module
 
     my (undef,$context) = @_;
     my $self = {};
@@ -33,14 +33,14 @@ sub new {
 }
 
 ######### Hook methods ############
-sub awsressources_inventory_handler {
+sub awsresources_inventory_handler {
 
     my $self = shift;
     my $logger = $self->{logger};
     my $common = $self->{context}->{common};
 
 
-    $logger->debug("Yeah you are in awsressources_inventory_handler :)");
+    $logger->debug("Yeah you are in awsresources_inventory_handler :)");
 
     # add there 1. targeted account and 2. arrays of targeted regions for this account
     my %targets = (
@@ -160,7 +160,7 @@ sub awsressources_inventory_handler {
 
     }
 
-    $logger->debug("Finishing awsressources_inventory_handler ..");
+    $logger->debug("Finishing awsresources_inventory_handler ..");
 }
 
 1;

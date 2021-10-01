@@ -8,7 +8,7 @@
 ## Please refer to the General Public Licence http://www.gnu.org/ or Licence.txt
 ################################################################################
 
-package Apache::Ocsinventory::Plugins::Awsressources::Map;
+package Apache::Ocsinventory::Plugins::Awsresources::Map;
 
 use strict;
 

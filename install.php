@@ -3,7 +3,7 @@
 /**
  * This function is called on installation and is used to create database schema for the plugin
  */
-function extension_install_awsressources()
+function extension_install_awsresources()
 {
     $commonObject = new ExtensionCommon;
 
@@ -74,7 +74,7 @@ function extension_install_awsressources()
 /**
  * This function is called on removal and is used to destroy database schema for the plugin
  */
-function extension_delete_awsressources()
+function extension_delete_awsresources()
 {
     $commonObject = new ExtensionCommon;
     $commonObject -> sqlQuery("DROP TABLE `AWS_INSTANCES`");
@@ -85,7 +85,7 @@ function extension_delete_awsressources()
 /**
  * This function is called on plugin upgrade
  */
-function extension_upgrade_awsressources()
+function extension_upgrade_awsresources()
 {
 
 }

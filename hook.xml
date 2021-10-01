@@ -6,7 +6,7 @@
     </hook>
     <hook type="submenu">
         <mainmenuidentifier>ms_extension</mainmenuidentifier>
-        <identifier>ms_awsressources</identifier>
+        <identifier>ms_awsresources</identifier>
         <translation>56000</translation>
     </hook>
 </hookstore>

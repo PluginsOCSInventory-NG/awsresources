@@ -1,2 +1,2 @@
-56000 AWS Ressources
+56000 AWS Resources
 56001 AWS Instances Informations

@@ -1,10 +1,10 @@
-# Plugin AWS Ressources
+# Plugin AWS Resources
 
 <p align="center">
   <img src="https://cdn.ocsinventory-ng.org/common/banners/banner660px.png" height=300 width=660 alt="Banner">
 </p>
 
-<h1 align="center">Plugin AWS Ressources</h1>
+<h1 align="center">Plugin AWS Resources</h1>
 <p align="center">
   <b>Some Links:</b><br>
   <a href="http://ask.ocsinventory-ng.org">Ask question</a> |
@@ -27,9 +27,9 @@ This plugin will retrieve Amazon AWS EC2 instances details using the describe-in
 
 ## Configuration
 
-Please edit the file **agent/Awsressources.pm** with your target account id(s) and target regions: 
+Please edit the file **agent/Awsresources.pm** with your target account id(s) and target regions:
 
-Line 47 to 49 :  
+Line 47 to 49 : 
 ```
     # add there 1. targeted account and 2. arrays of targeted regions for this account
     my %targets = (

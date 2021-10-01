@@ -6,7 +6,7 @@
      ob_start();
  }
 
- require("class/awsressourcesdetails.class.php");
+ require("class/awsresourcesdetails.class.php");
 
 // Process Get
 if(isset($_GET['list'])){
