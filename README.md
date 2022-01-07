@@ -30,7 +30,7 @@ This plugin will retrieve Amazon AWS EC2 instances details using the describe-in
 Please edit the file **agent/Awsresources.pm** with your target account id(s) and target regions:
 
 Line 47 to 49 : 
-```
+```perl
     # add there 1. targeted account and 2. arrays of targeted regions for this account
     my %targets = (
             '000000000002' =>    ['eu-central-1', 'us-east-2'],
@@ -38,3 +38,7 @@ Line 47 to 49 :
             ); 
 ```
 
+If needed, a proxy can be specified line 57 and 58 :
+```perl
+        # $ENV{HTTP_PROXY} = "set_http_proxy_here_if_necessary";
+        # $ENV{HTTPS_PROXY} = "set_https_proxy_here_if_necessary";
