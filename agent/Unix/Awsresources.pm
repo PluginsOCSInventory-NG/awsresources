@@ -54,7 +54,8 @@ sub awsresources_inventory_handler {
 
     foreach my $account (keys %targets) {
         $arn = "arn:aws:iam::$account:role/$IAMrole";
-
+        # $ENV{HTTP_PROXY} = "set_http_proxy_here_if_necessary";
+        # $ENV{HTTPS_PROXY} = "set_https_proxy_here_if_necessary";
         if (($assumeRole = `aws sts assume-role --role-arn "$arn" --role-session-name "OCS-Inventorization" 2>/dev/null`) ne '') {
             $res = decode_json $assumeRole;
             $logger->debug("AssumeRole successful for ARN: $arn");
