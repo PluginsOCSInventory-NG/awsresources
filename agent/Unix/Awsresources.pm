@@ -7,7 +7,6 @@ use Encode qw(decode);
 use POSIX qw(strftime);
 use JSON::PP;
 
-
 sub new {
 
     my $name="awsresources"; # Name of the module
@@ -53,6 +52,9 @@ sub awsresources_inventory_handler {
     
 
     foreach my $account (keys %targets) {
+        $ENV{AWS_ACCESS_KEY_ID} = '';
+        $ENV{AWS_SECRET_ACCESS_KEY} = '';
+        $ENV{AWS_SESSION_TOKEN} = '';
         $arn = "arn:aws:iam::$account:role/$IAMrole";
         # $ENV{HTTP_PROXY} = "set_http_proxy_here_if_necessary";
         # $ENV{HTTPS_PROXY} = "set_https_proxy_here_if_necessary";
@@ -75,6 +77,10 @@ sub awsresources_inventory_handler {
 
                 $result = decode_json $result;
 
+                my $accountAlias = `aws iam list-account-aliases`;
+                $accountAlias = decode_json $accountAlias;
+                $accountAlias = $accountAlias->{AccountAliases}[0];
+
                 if (@{$result->{Reservations}}) {
                     $logger->debug("Generating xml data for region : $region");        
                     # reservations level
@@ -84,11 +90,16 @@ sub awsresources_inventory_handler {
                         
                         # instance level
                         foreach my $instance (@{$reservation->{Instances}}) {
+                            my $ImageID = $instance->{ImageId};
+                            my $AMIDescription = `aws ec2 describe-images --image-ids $ImageID --region $region`;
+                            $AMIDescr = decode_json $AMIDescription;
+                            my $ImageDescr = $AMIDescr->{Images}[0]{Description};
                             # Add XML
                             push @{$common->{xmltags}->{AWS_INSTANCES}},
                             {
                                 RESERVATION_ID => [$reservationId],
                                 OWNER_ID => [$ownerId],
+                                ACCOUNT_ALIAS => [$accountAlias],
                                 INSTANCE_ID => [$instance->{InstanceId}],
                                 INSTANCE_TYPE => [$instance->{InstanceType}],
                                 LAUNCH_TIME => [$instance->{LaunchTime}],
@@ -96,6 +107,7 @@ sub awsresources_inventory_handler {
                                 ARCHITECTURE => [$instance->{Architecture}],
                                 KEY_NAME => [$instance->{KeyName}],
                                 IMAGE_ID => [$instance->{ImageId}],
+                                IMAGE_DESCRIPTION => [$ImageDescr],
                                 AMI_LAUNCH_INDEX => [$instance->{AmiLaunchIndex}],
                                 MONITORING => [$instance->{Monitoring}{State}],
                                 STATE_CODE => [$instance->{State}{Code}],
@@ -112,6 +124,7 @@ sub awsresources_inventory_handler {
                                 {
                                     RESERVATION_ID => [$reservationId],
                                     OWNER_ID => [$ownerId],
+                                    ACCOUNT_ALIAS => [$accountAlias],
                                     INSTANCE_ID => [$instance->{InstanceId}],
                                     MAC_ADDR => [$networkscat->{MacAddress}],
                                     PRIVATE_DNS_NAME => [$networkscat->{PrivateDnsName}],
@@ -131,6 +144,7 @@ sub awsresources_inventory_handler {
                                 {
                                     RESERVATION_ID => [$reservationId],
                                     OWNER_ID => [$ownerId],
+                                    ACCOUNT_ALIAS => [$accountAlias],
                                     INSTANCE_ID => [$instance->{InstanceId}],
                                     ROOT_DEVICE_NAME => [$instance->{RootDeviceName}],
                                     ROOT_DEVICE_TYPE => [$instance->{RootDeviceType}],
